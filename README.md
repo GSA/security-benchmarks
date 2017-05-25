@@ -9,8 +9,9 @@ The ISE publishes security guides for various systems at the GSA. For more infor
 ### Available Tools
 
 [Tenable Audit Files](https://github.com/GSA/ISE-TSC-Security-Benchmarks)
+
 [Windows GPOs](https://github.com/GSA/ISE-Security-Benchmark-GPOs)
 
 ### Coming Soon
-Ansible Roles
-BigFix Fixlets
+- Ansible Roles
+- BigFix Fixlets
