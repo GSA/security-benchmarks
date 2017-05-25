@@ -8,7 +8,7 @@ The ISE publishes security guides for various systems at the GSA. For more infor
 
 ### What is in here?
 
-- Tenable Audit Files
+ [Tenable Audit Files](https://github.com/GSA/ISE-TSC-Security-Benchmarks)
 - Ansible Playbooks (Coming Soon)
 - BigFix Fixlets (Comming Soon)
 - Other userful items such as GPOs and more
