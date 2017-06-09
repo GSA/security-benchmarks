@@ -8,7 +8,7 @@ The ISE publishes security guides for various systems at the GSA. For more infor
 
 ### Available Tools
 
-[Tenable Audit Files](https://github.com/GSA/ISE-TSC-Security-Benchmarks)
+[Tenable Audit Files](https://drive.google.com/drive/folders/0BwLUd26GHbxiT1hMVUtRTGNKZjg)
 
 [Windows GPOs](https://github.com/GSA/ISE-Security-Benchmark-GPOs)
 
