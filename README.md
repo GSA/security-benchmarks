@@ -14,5 +14,5 @@ The ISE publishes security guides for various systems at the GSA. For more infor
 
 ### Coming Soon
 - Ansible Roles
-- Chef
 - Puppet
+- Roles
