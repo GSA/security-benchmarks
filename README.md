@@ -13,6 +13,7 @@ The ISE publishes security guides for various systems at the GSA. For more infor
 
 ### Ansible Roles
 
+* [NGINX HTTPS proxy](https://github.com/GSA/ansible-https-proxy)
 * [Jenkins](https://github.com/GSA/jenkins-deploy)
 
 ### Coming Soon
