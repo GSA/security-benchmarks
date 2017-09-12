@@ -4,12 +4,17 @@ Welcome to General Services Administration (GSA) Information Security Engineerin
 
 ### What are these benchmarks?
 
-The ISE publishes security guides for various systems at the GSA. For more information, please refer to the published guide on insite.gsa.gov.  
+The ISE publishes security guides for various systems at the GSA. For more information, please refer to the published guide on insite.gsa.gov.
+
+### Reference
+
+* [DevSecOps example](https://github.com/GSA/devsecops-example)
+    * This is an example implementation of the DevSecOps pipeline, showing best practices for incorporating the other resources linked below
+* [IT Security Technical Guides and Standards](https://insite.gsa.gov/portal/content/627210) (only accessible to GSA)
+    * See the Hardening Guides
 
 ### Available Tools
 
-* [IT Security Technical Guides and Standards](https://insite.gsa.gov/portal/content/627210) (only accessible to GSA)
-    * See the Hardening Guides
 * [Tenable Nessus Audit Files](https://drive.google.com/drive/folders/0BwLUd26GHbxiT1hMVUtRTGNKZjg) (only accessible to GSA)
     * These are testing what is required by the Hardening Guides
 * [Windows GPOs](https://github.com/GSA/ISE-Security-Benchmark-GPOs)
