@@ -8,7 +8,10 @@ The ISE publishes security guides for various systems at the GSA. For more infor
 
 ### Available Tools
 
-* [Tenable Audit Files](https://drive.google.com/drive/folders/0BwLUd26GHbxiT1hMVUtRTGNKZjg) (only accessible to GSA)
+* [IT Security Technical Guides and Standards](https://insite.gsa.gov/portal/content/627210) (only accessible to GSA)
+    * See the Hardening Guides
+* [Tenable Nessus Audit Files](https://drive.google.com/drive/folders/0BwLUd26GHbxiT1hMVUtRTGNKZjg) (only accessible to GSA)
+    * These are testing what is required by the Hardening Guides
 * [Windows GPOs](https://github.com/GSA/ISE-Security-Benchmark-GPOs)
 
 ### Terraform Modules
@@ -20,6 +23,11 @@ The ISE publishes security guides for various systems at the GSA. For more infor
 
 * [Jenkins](https://github.com/GSA/jenkins-deploy)
 * [NGINX HTTPS proxy](https://github.com/GSA/ansible-https-proxy)
+
+#### Hardening
+
+These configure base operating systems in line with the Hardening Guides linked above, to the greatest extent possible.
+
 * [RHEL 7](https://github.com/GSA/ansible-os-rhel-7)
 * [Ubuntu 14](https://github.com/GSA/ansible-os-ubuntu-14)
 
