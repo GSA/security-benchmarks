@@ -15,6 +15,8 @@ The GSA publishes security guides for various operating systems and applications
 * [Tenable Nessus Audit Files](https://drive.google.com/drive/folders/0BwLUd26GHbxiT1hMVUtRTGNKZjg) (only accessible with GSA account)
     * Custom audit files for use with Tenable Security Center or Nessus Vulnerability Scanner
 
+* For questions or comments, please email [us](ise-guides@gsa.gov)
+
 ### IAC Tools
 
 #### Terraform Modules
