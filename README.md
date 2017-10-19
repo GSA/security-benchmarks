@@ -32,9 +32,8 @@ The GSA publishes security guides for various operating systems and applications
 #### Security Hardening
 
 These configure base operating systems in line with the Hardening Guides linked above, to the greatest extent possible.
-
+* [RHEL 6](https://github.com/GSA/ansible-os-rhel-6)
 * [RHEL 7](https://github.com/GSA/ansible-os-rhel-7)
 * [Ubuntu 14](https://github.com/GSA/ansible-os-ubuntu-14)
-* RHEL 6 Comming Soon
-* Ubuntu 16 Comming Soon
+* [Ubuntu 16](https://github.com/GSA/ansible-os-ubuntu-16)
 * [GPOs and INF for server 2008/2012](https://github.com/GSA/ISE-Security-Benchmark-GPOs)
