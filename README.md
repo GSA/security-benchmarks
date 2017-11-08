@@ -29,6 +29,7 @@ The [DevSecOps Example](https://github.com/GSA/devsecops-example) is a good star
 * [Base Infrastructure](https://github.com/GSA/DevSecOps-Infrastructure)
 * [EKK (logging) stack](https://github.com/GSA/devsecops-ekk-stack)
 * [Jenkins](https://github.com/GSA/jenkins-deploy)
+* [AWS VPC flow logs](https://github.com/GSA/terraform-vpc-flow-log)
 
 #### Ansible Roles
 
