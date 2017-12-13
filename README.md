@@ -13,10 +13,9 @@ The GSA publishes security guides for various operating systems and applications
 Only accessible with GSA account.
 
 * GSA Security Benchmarks
-    * [IT Security Technical Guides and Standards](https://insite.gsa.gov/portal/content/627210) Documents outlining the general use and standards for security baselines.
-    * [Security Benchmark Workbooks](https://drive.google.com/drive/folders/0BwLUd26GHbxibTFROVdoSk1RNUE) Individual workbooks listing the applicable security settings.
-* [Tenable Nessus Audit Files](https://drive.google.com/drive/folders/0BwLUd26GHbxiT1hMVUtRTGNKZjg)
-    * Custom audit files for use with Tenable Security Center or Nessus Vulnerability Scanner
+    * [IT Security Technical Guides and Standards](https://insite.gsa.gov/portal/content/627210) - Documents outlining the general use and standards for security baselines.
+    * [Security Benchmark Workbooks](https://drive.google.com/drive/folders/0BwLUd26GHbxibTFROVdoSk1RNUE) - Individual workbooks listing the applicable security settings.
+* [Tenable Nessus Audit Files](https://drive.google.com/drive/folders/0BwLUd26GHbxiT1hMVUtRTGNKZjg) - Custom audit files for use with Tenable Security Center or Nessus Vulnerability Scanner
 
 For questions or comments, please email [ise-guides@gsa.gov](mailto:ise-guides@gsa.gov).
 
@@ -26,7 +25,7 @@ The [DevSecOps Example](https://github.com/GSA/devsecops-example) is a good star
 
 #### Terraform Modules
 
-* [Base Infrastructure](https://github.com/GSA/DevSecOps-Infrastructure)
+* [Base Infrastructure](https://github.com/GSA/DevSecOps)
 * [EKK (logging) stack](https://github.com/GSA/devsecops-ekk-stack)
 * [Jenkins](https://github.com/GSA/jenkins-deploy)
 * [AWS VPC flow logs](https://github.com/GSA/terraform-vpc-flow-log)
