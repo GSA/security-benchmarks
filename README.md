@@ -43,7 +43,7 @@ Unless there's a good reason to go with something else, the following should be 
 
 Requirement | Linux | Windows
 --- | --- | ---
-Activity monitoring | [OSSEC][OSSEC] | ?
+Activity monitoring | [OSSEC][OSSEC] | [OSSEC][OSSEC]
 Antivirus | [ClamAV][ClamAV] | [ClamAV][ClamAV]
 Hardening (to match [benchmarks](#benchmarks)) | [RHEL 6][RHEL 6], [RHEL 7][RHEL 7], [Ubuntu 14][Ubuntu 14], [Ubuntu 16][Ubuntu 16] | [Group Policy Settings][GPOs]
 Log forwarding | [rsyslog](http://www.rsyslog.com/) | [Snare][Snare]
