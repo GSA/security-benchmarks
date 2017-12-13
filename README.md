@@ -33,7 +33,21 @@ The [DevSecOps Example](https://github.com/GSA/devsecops-example) is a good star
 #### Ansible Roles
 
 * [Jenkins](https://github.com/GSA/jenkins-deploy)
+* [Nessus](https://github.helix.gsa.gov/GSASecOps/ansible-nessus-agent)
 * [NGINX HTTPS proxy](https://github.com/GSA/ansible-https-proxy)
+* [OSSEC][OSSEC]
+
+#### Agents
+
+Unless there's a good reason to go with something else, the following should be used on every server:
+
+Category | Linux | Windows
+--- | --- | ---
+Activity monitoring | [OSSEC][OSSEC] | ?
+Antivirus | [ClamAV][ClamAV] | [ClamAV][ClamAV]
+Log forwarding | [rsyslog](http://www.rsyslog.com/) | [Snare](https://www.intersectalliance.com/our-product/snare-agent/)
+Multi-factor auth (required for internet-facing servers) | [Google Authenticator][GAuth] | [Rohos Logon Key][Rohos]
+Vulnerability scanning | [Nessus][Nessus] | [Nessus][Nessus]
 
 #### Security Hardening
 
@@ -43,3 +57,11 @@ These configure base operating systems in line with the Hardening Guides linked 
 * [Ubuntu 14](https://github.com/GSA/ansible-os-ubuntu-14)
 * [Ubuntu 16](https://github.com/GSA/ansible-os-ubuntu-16)
 * [GPOs and INF for server 2008/2012](https://github.com/GSA/ISE-Security-Benchmark-GPOs)
+
+<!-- reference-style links, to de-duplicate URLs and keep the table above readable -->
+
+[ClamAV]: https://www.clamav.net/
+[GAuth]: https://github.com/GSA/d2d/blob/master/docs/linux_mfa_setup.md
+[Nessus]: https://docs.google.com/document/d/1I7oIx5WJmYCJT_IE-4UNQ8Qd-Fqf_SSR2CJ9MuX63CI/edit#
+[OSSEC]: https://github.helix.gsa.gov/GSASecOps/ansible-ossec-agent
+[Rohos]: https://github.com/GSA/d2d/blob/master/docs/windows_mfa_setup.md
