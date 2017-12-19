@@ -48,13 +48,14 @@ Antivirus | [ClamAV][ClamAV] | [ClamAV][ClamAV]
 Hardening (to match [benchmarks](#benchmarks)) | [RHEL 6][RHEL 6], [RHEL 7][RHEL 7], [Ubuntu 14][Ubuntu 14], [Ubuntu 16][Ubuntu 16] | [Group Policy Settings][GPOs]
 Log forwarding | [rsyslog](http://www.rsyslog.com/) | [Snare][Snare]
 Multi-factor auth (required for internet-facing servers) | [Google Authenticator][GAuth] | [Rohos Logon Key][Rohos]
-Vulnerability scanning | [Nessus][Nessus] | [Nessus][Nessus]
+Vulnerability scanning | [Nessus][Nessus Linux] | [Nessus][Nessus Win]
 
 <!-- reference-style links, to de-duplicate URLs and keep the table above readable -->
 
 [ClamAV]: https://www.clamav.net/
 [GAuth]: https://github.com/GSA/d2d/blob/master/docs/linux_mfa_setup.md
-[Nessus]: https://docs.google.com/document/d/1I7oIx5WJmYCJT_IE-4UNQ8Qd-Fqf_SSR2CJ9MuX63CI/edit#
+[Nessus Linux]: https://drive.google.com/open?id=0B726fftFCN-oemFRazdnM3FITE0
+[Nessus Win]: https://drive.google.com/open?id=0B726fftFCN-oQUtGWWE3SENBYjg
 [OSSEC]: https://github.helix.gsa.gov/GSASecOps/ansible-ossec-agent
 [RHEL 6]: https://github.com/GSA/ansible-os-rhel-6
 [RHEL 7]: https://github.com/GSA/ansible-os-rhel-7
