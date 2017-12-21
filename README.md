@@ -68,3 +68,5 @@ This repository also contains code to build the base server images with all the 
     ```sh
     make
     ```
+
+This will create AMIs with names of `<operating system>-base-<timestamp>`.
