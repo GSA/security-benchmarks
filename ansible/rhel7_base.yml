@@ -1,0 +1,7 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - ansible-os-rhel-7
+    - role: cristian04.cloudwatch-monitoring
+      cron_specs: "{{ cloudwatch_cron_specs }}"

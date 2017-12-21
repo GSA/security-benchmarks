@@ -44,3 +44,33 @@ These configure base operating systems in line with the Hardening Guides linked 
 * [Ubuntu 14](https://github.com/GSA/ansible-os-ubuntu-14)
 * [Ubuntu 16](https://github.com/GSA/ansible-os-ubuntu-16)
 * [GPOs and INF for server 2008/2012](https://github.com/GSA/ISE-Security-Benchmark-GPOs)
+
+## Base images
+
+_Work in progress._
+
+This repository also contains code to build the base server images with all the agents etc. installed.
+
+1. Set up the AWS CLI.
+    1. [Install](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
+    1. [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+1. Install additional dependencies:
+    * [Ansible](https://docs.ansible.com/ansible/latest/intro_installation.html)
+    * [Packer](https://www.packer.io/)
+1. Install Ansible dependencies.
+
+    ```sh
+    ansible-galaxy install -p ansible/roles -r ansible/requirements.yml
+    ```
+
+1. Specify a region ([options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)).
+
+    ```sh
+    export AWS_DEFAULT_REGION=...
+    ```
+
+1. Build the AMI.
+
+    ```sh
+    packer build packer/rhel7_base.json
+    ```

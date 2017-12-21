@@ -1,0 +1,27 @@
+{
+  "variables": {
+    "region": "{{env `AWS_DEFAULT_REGION`}}"
+  },
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "ansible/rhel7_base.yml"
+    }
+  ],
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "{{user `region`}}",
+    "source_ami_filter": {
+      "filters": {
+        "virtualization-type": "hvm",
+        "name": "RHEL-7.4_HVM_GA-*",
+        "root-device-type": "ebs"
+      },
+      "owners": ["309956199498"],
+      "most_recent": true
+    },
+    "instance_type": "t2.micro",
+    "ssh_username": "ec2-user",
+    "ami_name": "rhel7-base-{{timestamp}}"
+  }]
+}
