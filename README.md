@@ -57,12 +57,6 @@ This repository also contains code to build the base server images with all the 
 1. Install additional dependencies:
     * [Ansible](https://docs.ansible.com/ansible/latest/intro_installation.html)
     * [Packer](https://www.packer.io/)
-1. Install Ansible dependencies.
-
-    ```sh
-    ansible-galaxy install -p ansible/roles -r ansible/requirements.yml
-    ```
-
 1. Specify a region ([options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)).
 
     ```sh
@@ -72,5 +66,5 @@ This repository also contains code to build the base server images with all the 
 1. Build the AMI.
 
     ```sh
-    packer build packer/rhel7_base.json
+    make
     ```
