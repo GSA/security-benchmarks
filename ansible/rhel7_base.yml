@@ -1,6 +1,14 @@
 ---
 - hosts: all
   become: true
+  pre_tasks:
+    # required for cristian04.cloudwatch-monitoring
+    - name: Enable additional RHEL repositories
+      command: yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+    - name: Install unzip package
+      yum:
+        name: unzip
+        update_cache: true
   roles:
     - ansible-os-rhel-7
     - role: cristian04.cloudwatch-monitoring
