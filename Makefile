@@ -1,4 +1,4 @@
-ami: rhel7 ubuntu16
+default: rhel7 ubuntu16
 
 roles:
 	ansible-galaxy install -p ansible/roles -r ansible/requirements.yml
