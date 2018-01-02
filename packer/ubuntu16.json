@@ -1,0 +1,6 @@
+{
+  "source_ami_name": "*ubuntu-xenial-16.04-amd64-server-*",
+  "source_ami_owner": "099720109477",
+  "ssh_username": "ubuntu",
+  "os": "ubuntu16"
+}
