@@ -39,7 +39,7 @@ The [DevSecOps Example](https://github.com/GSA/devsecops-example) is a good star
 
 ### By operating system
 
-Unless there's a good reason to go with something else, the following should be used on every server:
+Recommended tools to use on every server, though you are not limited to the options this list. Work in progress.
 
 Requirement | Linux | Windows
 --- | --- | ---
