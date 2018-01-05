@@ -6,6 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Create fake SSH public key
+          command: mkdir -p ~/.ssh && touch ~/.ssh/id_rsa.pub
+      - run:
           name: Install Ansible dependencies
           command: apk add --no-cache git
       - run:
