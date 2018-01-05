@@ -68,7 +68,7 @@ workflows:
       - install_ansible_roles
       - validate_packer:
           requires:
-            - install_ansible-roles
+            - install_ansible_roles
       - deploy_images:
           requires:
             - validate_packer
