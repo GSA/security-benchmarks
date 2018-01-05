@@ -9,7 +9,8 @@
   "provisioners": [
     {
       "type": "ansible",
-      "playbook_file": "ansible/{{user `os`}}_base.yml"
+      "playbook_file": "ansible/{{user `os`}}_base.yml",
+      "user": "{{user `ssh_username`}}"
     }
   ],
   "builders": [{
