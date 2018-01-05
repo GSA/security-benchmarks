@@ -15,6 +15,6 @@
         update_cache: true
   roles:
     - ansible-os-rhel-7
-    - role: cristian04.cloudwatch-monitoring
-      sudo: yes
-      cron_specs: "{{ cloudwatch_cron_specs }}"
+    - {role: cristian04.cloudwatch-monitoring,
+      sudo: yes,
+      cron_specs: "{{ cloudwatch_cron_specs }}"}
