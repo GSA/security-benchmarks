@@ -10,7 +10,10 @@
     {
       "type": "ansible",
       "playbook_file": "ansible/{{user `os`}}_base.yml",
-      "user": "{{user `ssh_username`}}"
+      "user": "{{user `ssh_username`}}",
+      "extra_arguments": [
+        "-vvvv"
+      ]
     }
   ],
   "builders": [{
