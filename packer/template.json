@@ -1,5 +1,9 @@
 {
   "variables": {
+    "source_ami_name": null,
+    "source_ami_owner": null,
+    "ssh_username": null,
+    "os": null,
     "region": "{{env `AWS_DEFAULT_REGION`}}"
   },
   "provisioners": [
