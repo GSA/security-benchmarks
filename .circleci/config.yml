@@ -29,10 +29,10 @@ jobs:
           command: packer validate -syntax-only packer/template.json
       - run:
           name: Validate rhel7 template
-          command: packer validate -syntax-only packer/rhel7.json
+          command: packer validate -syntax-only -var-file=packer/rhel7.json packer/template.json
       - run:
           name: Validate ubuntu16 template
-          command: packer validate -syntax-only packer/ubuntu16.json
+          command: packer validate -syntax-only -var-file=packer/ubuntu16.json packer/template.json
 
   deploy_images:
     docker:
