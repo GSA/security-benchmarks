@@ -66,10 +66,12 @@ workflows:
   validate_and_deploy:
     jobs:
       - install_ansible_roles
-      - validate_packer
+      - validate_packer:
+          requires:
+            - install_ansible-roles
       - deploy_images:
           requires:
-            - install_ansible_roles
+            - validate_packer
       # - deploy_env:
       #     filters:
       #       branches:
