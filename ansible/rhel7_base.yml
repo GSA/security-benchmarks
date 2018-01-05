@@ -16,4 +16,5 @@
   roles:
     - ansible-os-rhel-7
     - role: cristian04.cloudwatch-monitoring
+      become: yes
       cron_specs: "{{ cloudwatch_cron_specs }}"
