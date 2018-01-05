@@ -9,6 +9,10 @@
       yum:
         name: unzip
         update_cache: true
+    - name: Install required perl package for cloudwatch module
+      yum:
+        name: perl-Digest-SHA.x86_64
+        update_cache: true
   roles:
     - ansible-os-rhel-7
     - role: cristian04.cloudwatch-monitoring
