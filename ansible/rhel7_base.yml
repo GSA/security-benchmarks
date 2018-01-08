@@ -14,7 +14,7 @@
         name: perl-Digest-SHA.x86_64
         update_cache: true
   roles:
-    - ansible-os-rhel-7
     - {role: cristian04.cloudwatch-monitoring,
-      sudo: yes,
-      cron_specs: "{{ cloudwatch_cron_specs }}"}
+    sudo: yes,
+    cron_specs: "{{ cloudwatch_cron_specs }}"}
+    - ansible-os-rhel-7
