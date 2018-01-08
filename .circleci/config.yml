@@ -1,0 +1,83 @@
+version: 2
+jobs:
+  install_ansible_roles:
+    docker:
+      - image: williamyeh/ansible:alpine3
+    steps:
+      - checkout
+      - run:
+          name: Create fake SSH public key
+          command: mkdir -p ~/.ssh && touch ~/.ssh/id_rsa.pub
+      - run:
+          name: Install Ansible dependencies
+          command: apk add --no-cache git
+      - run:
+          name: Download Ansible dependencies
+          command: ansible-galaxy install -p ansible/roles -r ansible/requirements.yml
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
+
+  validate_packer:
+    docker:
+      - image: hashicorp/packer:light
+    steps:
+      - checkout
+      - run:
+          name: Validate base template
+          command: packer validate -syntax-only packer/template.json
+      - run:
+          name: Validate rhel7 template
+          command: packer validate -syntax-only -var-file=packer/rhel7.json packer/template.json
+      - run:
+          name: Validate ubuntu16 template
+          command: packer validate -syntax-only -var-file=packer/ubuntu16.json packer/template.json
+
+  deploy_images:
+    docker:
+      - image: 18fgsa/devsecops-builder:alpine
+    steps:
+      - attach_workspace:
+          at: .
+
+      - add_ssh_keys
+      - run:
+          name: Disable host key checking
+          command: printf "\nHost *\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+
+      - run:
+          name: Build rhel7 AMI
+          command: |
+            export USER=$(whoami)
+            packer build -var-file=packer/rhel7.json packer/template.json
+          # working_directory: ~/project/terraform/env
+
+      - run:
+          name: Build ubuntu16 AMI
+          command: |
+            export USER=$(whoami)
+            packer build -var-file=packer/ubuntu16.json packer/template.json
+          # working_directory: ~/project/terraform/env
+
+workflows:
+  version: 2
+
+  validate_and_deploy:
+    jobs:
+      - install_ansible_roles
+      - validate_packer:
+          requires:
+            - install_ansible_roles
+      - deploy_images:
+          requires:
+            - validate_packer
+      # - deploy_env:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #           - circle-deploy
+      #     requires:
+      #       - validate_packer
+      #       - validate_terraform
