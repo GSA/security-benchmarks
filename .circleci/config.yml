@@ -10,7 +10,7 @@ jobs:
           command: apk add --no-cache git
       - run:
           name: Download Ansible dependencies
-          command: ansible-galaxy install -p ansible/roles -r ansible/requirements.yml
+          command: make roles
       - persist_to_workspace:
           root: .
           paths:
@@ -22,14 +22,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Validate base template
-          command: packer validate -syntax-only packer/template.json
-      - run:
-          name: Validate rhel7 template
-          command: packer validate -syntax-only -var-file=packer/rhel7.json packer/template.json
-      - run:
-          name: Validate ubuntu16 template
-          command: packer validate -syntax-only -var-file=packer/ubuntu16.json packer/template.json
+          name: Validate Packer templates
+          command: make validate_packer
 
   deploy_images:
     docker:
@@ -47,13 +41,13 @@ jobs:
           name: Build rhel7 AMI
           command: |
             export USER=$(whoami)
-            packer build -var-file=packer/rhel7.json packer/template.json
+            make rhel7
 
       - run:
           name: Build ubuntu16 AMI
           command: |
             export USER=$(whoami)
-            packer build -var-file=packer/ubuntu16.json packer/template.json
+            make ubuntu16
 
 workflows:
   version: 2
