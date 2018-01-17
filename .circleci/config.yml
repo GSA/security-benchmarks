@@ -25,7 +25,7 @@ jobs:
           name: Validate Packer templates
           command: make validate_packer
 
-  deploy_images:
+  deploy_rhel7:
     docker:
       - image: 18fgsa/devsecops-builder:alpine
     steps:
@@ -43,6 +43,18 @@ jobs:
             export USER=$(whoami)
             make rhel7
 
+  deploy_ubuntu16:
+    docker:
+      - image: 18fgsa/devsecops-builder:alpine
+    steps:
+      - attach_workspace:
+          at: .
+
+      - add_ssh_keys
+      - run:
+          name: Disable host key checking
+          command: printf "\nHost *\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+
       - run:
           name: Build ubuntu16 AMI
           command: |
@@ -56,7 +68,15 @@ workflows:
     jobs:
       - install_ansible_roles
       - validate_packer
-      - deploy_images:
+      - deploy_rhel7:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - install_ansible_roles
+            - validate_packer
+      - deploy_ubuntu16:
           filters:
             branches:
               only:
