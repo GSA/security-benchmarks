@@ -1,13 +1,15 @@
 version: 2
 jobs:
-  install_ansible_roles:
+  install_and_validate:
     docker:
-      - image: williamyeh/ansible:alpine3
+      - image: 18fgsa/devsecops-builder:alpine
     steps:
       - checkout
+
       - run:
-          name: Install Ansible dependencies
-          command: apk add --no-cache git
+          name: Validate Packer templates
+          command: make validate_packer
+
       - run:
           name: Download Ansible dependencies
           command: make roles
@@ -15,15 +17,6 @@ jobs:
           root: .
           paths:
             - ./*
-
-  validate_packer:
-    docker:
-      - image: hashicorp/packer:light
-    steps:
-      - checkout
-      - run:
-          name: Validate Packer templates
-          command: make validate_packer
 
   deploy_rhel7:
     docker:
@@ -66,15 +59,13 @@ workflows:
 
   validate_and_deploy:
     jobs:
-      - install_ansible_roles
-      - validate_packer
+      - install_and_validate
       - deploy_rhel7: &deploy
           filters:
             branches:
               only:
                 - master
           requires:
-            - install_ansible_roles
-            - validate_packer
+            - install_and_validate
       - deploy_ubuntu16:
           <<: *deploy
