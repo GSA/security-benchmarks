@@ -13,6 +13,9 @@ jobs:
       - run:
           name: Download Ansible dependencies
           command: make roles
+      - run:
+          name: Validate Ansible playbooks
+          command: make validate_ansible
       - persist_to_workspace:
           root: .
           paths:
