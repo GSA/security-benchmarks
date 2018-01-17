@@ -5,8 +5,8 @@ roles:
 
 validate_packer:
 	packer validate -syntax-only packer/template.json
-	packer validate -syntax-only -var-file=packer/rhel7.json packer/template.json
-	packer validate -syntax-only -var-file=packer/ubuntu16.json packer/template.json
+	packer validate -var-file=packer/rhel7.json packer/template.json
+	packer validate -var-file=packer/ubuntu16.json packer/template.json
 
 rhel7: roles
 	packer build -var-file=packer/rhel7.json packer/template.json
