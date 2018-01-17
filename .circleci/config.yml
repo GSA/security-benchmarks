@@ -6,9 +6,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Create fake SSH public key
-          command: mkdir -p ~/.ssh && touch ~/.ssh/id_rsa.pub
-      - run:
           name: Install Ansible dependencies
           command: apk add --no-cache git
       - run:
@@ -51,14 +48,12 @@ jobs:
           command: |
             export USER=$(whoami)
             packer build -var-file=packer/rhel7.json packer/template.json
-          # working_directory: ~/project/terraform/env
 
       - run:
           name: Build ubuntu16 AMI
           command: |
             export USER=$(whoami)
             packer build -var-file=packer/ubuntu16.json packer/template.json
-          # working_directory: ~/project/terraform/env
 
 workflows:
   version: 2
@@ -66,18 +61,12 @@ workflows:
   validate_and_deploy:
     jobs:
       - install_ansible_roles
-      - validate_packer:
+      - validate_packer
+      - deploy_images:
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - install_ansible_roles
-      - deploy_images:
-          requires:
             - validate_packer
-      # - deploy_env:
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
-      #           - circle-deploy
-      #     requires:
-      #       - validate_packer
-      #       - validate_terraform
