@@ -68,7 +68,7 @@ workflows:
     jobs:
       - install_ansible_roles
       - validate_packer
-      - deploy_rhel7:
+      - deploy_rhel7: &deploy
           filters:
             branches:
               only:
@@ -77,10 +77,4 @@ workflows:
             - install_ansible_roles
             - validate_packer
       - deploy_ubuntu16:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - install_ansible_roles
-            - validate_packer
+          <<: *deploy
