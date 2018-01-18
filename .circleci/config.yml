@@ -1,37 +1,27 @@
 version: 2
 jobs:
-  install_ansible_roles:
+  install_and_validate:
     docker:
-      - image: williamyeh/ansible:alpine3
+      - image: 18fgsa/devsecops-builder:alpine
     steps:
       - checkout
+
       - run:
-          name: Install Ansible dependencies
-          command: apk add --no-cache git
+          name: Validate Packer templates
+          command: make validate_packer
+
       - run:
           name: Download Ansible dependencies
-          command: ansible-galaxy install -p ansible/roles -r ansible/requirements.yml
+          command: make roles
+      - run:
+          name: Validate Ansible playbooks
+          command: make validate_ansible
       - persist_to_workspace:
           root: .
           paths:
             - ./*
 
-  validate_packer:
-    docker:
-      - image: hashicorp/packer:light
-    steps:
-      - checkout
-      - run:
-          name: Validate base template
-          command: packer validate -syntax-only packer/template.json
-      - run:
-          name: Validate rhel7 template
-          command: packer validate -syntax-only -var-file=packer/rhel7.json packer/template.json
-      - run:
-          name: Validate ubuntu16 template
-          command: packer validate -syntax-only -var-file=packer/ubuntu16.json packer/template.json
-
-  deploy_images:
+  deploy_rhel7:
     docker:
       - image: 18fgsa/devsecops-builder:alpine
     steps:
@@ -47,26 +37,38 @@ jobs:
           name: Build rhel7 AMI
           command: |
             export USER=$(whoami)
-            packer build -var-file=packer/rhel7.json packer/template.json
+            make rhel7
+
+  deploy_ubuntu16:
+    docker:
+      - image: 18fgsa/devsecops-builder:alpine
+    steps:
+      - attach_workspace:
+          at: .
+
+      - add_ssh_keys
+      - run:
+          name: Disable host key checking
+          command: printf "\nHost *\n\tStrictHostKeyChecking no" >> ~/.ssh/config
 
       - run:
           name: Build ubuntu16 AMI
           command: |
             export USER=$(whoami)
-            packer build -var-file=packer/ubuntu16.json packer/template.json
+            make ubuntu16
 
 workflows:
   version: 2
 
   validate_and_deploy:
     jobs:
-      - install_ansible_roles
-      - validate_packer
-      - deploy_images:
+      - install_and_validate
+      - deploy_rhel7: &deploy
           filters:
             branches:
               only:
                 - master
           requires:
-            - install_ansible_roles
-            - validate_packer
+            - install_and_validate
+      - deploy_ubuntu16:
+          <<: *deploy
