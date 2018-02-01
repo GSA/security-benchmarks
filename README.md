@@ -80,11 +80,13 @@ This will create AMIs with names of `<operating system>-base-<timestamp>`.
 
 ## Service Control Policy
 
-GSA uses a spreadsheet to track the approval status of AWS services. To generate a [Service Control Policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to only allow those services:
+GSA uses a spreadsheet to track the approval status of AWS services. To generate a [Service Control Policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to only allow approved services:
 
 1. Export a CSV from [the AWS service approval tracking spreadsheet](https://docs.google.com/spreadsheets/d/1kJrPqu10x80LaGQ_oXFDuoPkBdnaXrXTQVF_uJ14-ok/edit#gid=0).
     * Link above only accessible to GSA.
-    * Expects a column called `Service Identifier` with the lower-case namespace values (`ec2`, etc).
+    * Expects columns:
+        * `Service Identifier`, with the lower-case namespace values (`ec2`, etc.)
+        * `Approval Status`, with the word `Approved`...or not
 1. Generate the policy.
 
         $ SRC=path/to/export.csv python3 scp.py
