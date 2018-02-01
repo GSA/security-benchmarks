@@ -4,7 +4,7 @@ Welcome to the General Services Administration Security Benchmarks repository. H
 
 ## What are GSA Security Benchmarks?
 
-The GSA publishes security guides for various operating systems and applications commonly used at the agency. For more information, please refer to the published guides on [insite.gsa.gov](https://insite.gsa.gov/portal/content/627210) (only accessible with GSA account).  
+The GSA publishes security guides for various operating systems and applications commonly used at the agency. For more information, please refer to the published guides on [insite.gsa.gov](https://insite.gsa.gov/portal/content/627210) (only accessible with GSA account).
 
 ## Available Tools
 
@@ -77,6 +77,29 @@ This repository also contains code to build the base server images with all the 
     ```
 
 This will create AMIs with names of `<operating system>-base-<timestamp>`.
+
+## Service Control Policy
+
+GSA uses a spreadsheet to track the approval status of AWS services. To generate a [Service Control Policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to only allow those services:
+
+1. Export a CSV from [the AWS service approval tracking spreadsheet](https://docs.google.com/spreadsheets/d/1kJrPqu10x80LaGQ_oXFDuoPkBdnaXrXTQVF_uJ14-ok/edit#gid=0).
+    * Link above only accessible to GSA.
+    * Expects a column called `Service Identifier` with the lower-case namespace values (`ec2`, etc).
+1. Generate the policy.
+
+        $ SRC=path/to/export.csv python3 scp.py
+        {
+            "Version": "2012-10-17",
+            ...
+        }
+
+1. Validate the policy.
+    1. [Create a new IAM policy in the AWS Console.](https://console.aws.amazon.com/iam/home#/policies$new?step=edit)
+    1. Paste in the generated JSON.
+    1. Click `Review policy`.
+    1. Review [the warnings/errors](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_policies.html#troubleshoot_policies-unrecognized-visual).
+    1. Close the tab - you don't need to save the policy here.
+1. [Create the Service Control Policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html#create_policy) with the generated JSON.
 
 <!-- reference-style links, to de-duplicate URLs and keep the table above readable -->
 
