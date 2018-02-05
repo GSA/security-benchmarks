@@ -13,16 +13,15 @@ def get_namespaces(csv_path):
     with open(csv_path, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            namespace = row['Service Identifier']
+            namespace = row['Service Namespace']
             if namespace and is_approved(row):
                 results.add(namespace)
 
     return results
 
+
 def get_actions(namespaces):
-    actions = [ns + ':*' for ns in namespaces]
-    actions.sort()
-    return actions
+    return [ns + ':*' for ns in namespaces]
 
 
 def generate_policy(actions):
@@ -43,6 +42,7 @@ def generate_policy(actions):
 def csv_to_policy(csv_path):
     namespaces = get_namespaces(SRC)
     actions = get_actions(namespaces)
+    actions.sort()
     return generate_policy(actions)
 
 

@@ -85,7 +85,7 @@ GSA uses a spreadsheet to track the approval status of AWS services. To generate
 1. Export a CSV from [the AWS service approval tracking spreadsheet](https://docs.google.com/spreadsheets/d/1kJrPqu10x80LaGQ_oXFDuoPkBdnaXrXTQVF_uJ14-ok/edit#gid=0).
     * Link above only accessible to GSA.
     * Expects columns:
-        * `Service Identifier`, with the lower-case namespace values (`ec2`, etc.)
+        * `Service Namespace`, with the lower-case [namespace](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) values (`ec2`, etc.)
         * `Approval Status`, with the word `Approved`...or not
 1. Generate the policy.
 
