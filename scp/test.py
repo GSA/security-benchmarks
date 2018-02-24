@@ -7,11 +7,18 @@ class TestSCPGenerator(unittest.TestCase):
         tests = {
             'Approved': True,
             'approved': True,
-            'nope': False
+            'it has been approved': True,
+            'was approved': True,
+            'nope': False,
+            'not approved': False,
+            'not been approved': False,
+            'not yet approved': False,
+            "isn't approved": False
         }
         for status, expected in tests.items():
             actual = is_approved({'Approval Status': status})
-            self.assertEqual(actual, expected, "{} should have resulted in is_approved()=={}".format(status, expected))
+            err = "'{}' should have resulted in is_approved()=={}".format(status, expected)
+            self.assertEqual(actual, expected, err)
 
 
 if __name__ == '__main__':

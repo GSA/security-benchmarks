@@ -1,11 +1,15 @@
 import csv
 import json
 import os
+import re
 
 
 def is_approved(row):
-    status = row['Approval Status']
-    return 'approved' in status.lower()
+    status = row['Approval Status'].lower()
+    return (
+        'approved' in status and
+        re.match("(not|isn'?t|hasn'?t).*approved", status) is None
+    )
 
 
 def get_namespaces(csv_path):
