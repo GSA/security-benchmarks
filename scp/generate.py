@@ -46,6 +46,7 @@ def csv_to_policy(csv_path):
     return generate_policy(actions)
 
 
-SRC = os.getenv('SRC', 'export.csv')
-policy = csv_to_policy(SRC)
-print(json.dumps(policy, indent=4))
+if __name__ == '__main__':
+    SRC = os.getenv('SRC', 'export.csv')
+    policy = csv_to_policy(SRC)
+    print(json.dumps(policy, indent=4))
