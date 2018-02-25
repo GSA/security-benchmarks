@@ -1,11 +1,15 @@
 import csv
 import json
 import os
+import re
 
 
 def is_approved(row):
-    status = row['Approval Status']
-    return 'approved' in status.lower()
+    status = row['Approval Status'].lower()
+    return (
+        'approved' in status and
+        re.match("(not|isn'?t|hasn'?t).*approved", status) is None
+    )
 
 
 def get_namespaces(csv_path):
@@ -46,6 +50,7 @@ def csv_to_policy(csv_path):
     return generate_policy(actions)
 
 
-SRC = os.getenv('SRC', 'export.csv')
-policy = csv_to_policy(SRC)
-print(json.dumps(policy, indent=4))
+if __name__ == '__main__':
+    SRC = os.getenv('SRC', 'export.csv')
+    policy = csv_to_policy(SRC)
+    print(json.dumps(policy, indent=4))

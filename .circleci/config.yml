@@ -1,5 +1,14 @@
 version: 2
 jobs:
+  scp:
+    docker:
+      - image: python:3-alpine
+    steps:
+      - checkout
+      - run:
+          name: Run Service Control Policy tests
+          command: python scp/test.py
+
   install_and_validate:
     docker:
       - image: 18fgsa/devsecops-builder:alpine
@@ -63,6 +72,7 @@ workflows:
   validate_and_deploy:
     jobs:
       - install_and_validate
+      - scp
       - deploy_rhel7: &deploy
           filters:
             branches:
