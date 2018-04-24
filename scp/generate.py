@@ -44,7 +44,7 @@ def generate_policy(actions):
 
 
 def csv_to_policy(csv_path):
-    namespaces = get_namespaces(SRC)
+    namespaces = get_namespaces(csv_path)
     # sanity check
     if not namespaces:
         raise RuntimeError("Expected to find more than zero namespaces")
