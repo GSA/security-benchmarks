@@ -9,7 +9,7 @@ GSA uses a spreadsheet to track the approval status of AWS services. To generate
         * `Approval Status`, with the word `Approved`...or not
 1. Generate the policy.
 
-        $ SRC=path/to/export.csv python3 scp.py
+        $ SRC=path/to/export.csv python3 scp/generate.py
         {
             "Version": "2012-10-17",
             ...
