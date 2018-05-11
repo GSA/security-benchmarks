@@ -31,9 +31,9 @@ To generate the Service Control Policy:
 
 While the generated Service Control Spreadsheet (artifact) isn’t version controlled, the code to generate it is versioned by Git, and the spreadsheet is versioned by Google Sheets. Changes to the spreadsheet are made by Security Engineering; changes to the code are made by pull request (by anyone, but particularly the DevSecOps team) and merged by DevSecOps.
 
-## Compliance information
+## Security compliance
 
-**Component approval status:** in assessment
+**Component ATO status:** approved
 
 **Relevant controls:**
 
