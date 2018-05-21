@@ -46,13 +46,13 @@ Recommended tools to use on every server, though you are not limited to the opti
 Requirement | Linux | Windows
 --- | --- | ---
 Activity monitoring | [OSSEC][OSSEC] | [OSSEC][OSSEC]
-Antivirus (Prefered if OS is supported) | [Cylance][Cylance]|[Cylance][Cylance]
+Antivirus (prefered if OS is supported) | [Cylance][Cylance]|[Cylance][Cylance]
 Antivirus | [ClamAV][ClamAV] | [ClamAV][ClamAV]
 Hardening (to match [benchmarks](#benchmarks)) | [RHEL 6][RHEL 6], [RHEL 7][RHEL 7], [Ubuntu 14][Ubuntu 14], [Ubuntu 16][Ubuntu 16] | [Group Policy Settings][GPOs]
 Log forwarding | [rsyslog](http://www.rsyslog.com/) | [Snare][Snare]
 Multi-factor auth (required for internet-facing servers) | [Google Authenticator][GAuth] | [Rohos Logon Key][Rohos]
 Vulnerability scanning | [Nessus][Nessus Linux] | [Nessus][Nessus Win]
-Incident Response (If OS is supported) | [FireEyeHx][FireEyeHx]|[FireEyeHx][FireEyeHx]
+Incident response (if OS is supported) | [FireEyeHx][FireEyeHx]|[FireEyeHx][FireEyeHx]
 
 ## Base images
 
