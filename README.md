@@ -46,7 +46,7 @@ Recommended tools to use on every server, though you are not limited to the opti
 Requirement | Linux | Windows
 --- | --- | ---
 Activity monitoring | [OSSEC][OSSEC] | [OSSEC][OSSEC]
-Antivirus (prefered if OS is supported) | [Cylance][Cylance]|[Cylance][Cylance]
+Antivirus (preferred if OS is supported) | [Cylance][Cylance]|[Cylance][Cylance]
 Antivirus | [ClamAV][ClamAV] | [ClamAV][ClamAV]
 Hardening (to match [benchmarks](#benchmarks)) | [RHEL 6][RHEL 6], [RHEL 7][RHEL 7], [Ubuntu 14][Ubuntu 14], [Ubuntu 16][Ubuntu 16] | [Group Policy Settings][GPOs]
 Log forwarding | [rsyslog](http://www.rsyslog.com/) | [Snare][Snare]
