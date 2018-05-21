@@ -46,11 +46,13 @@ Recommended tools to use on every server, though you are not limited to the opti
 Requirement | Linux | Windows
 --- | --- | ---
 Activity monitoring | [OSSEC][OSSEC] | [OSSEC][OSSEC]
+Antivirus (Prefered if OS is supported) | [Cylance][Cylance]|[Cylance][Cylance]
 Antivirus | [ClamAV][ClamAV] | [ClamAV][ClamAV]
 Hardening (to match [benchmarks](#benchmarks)) | [RHEL 6][RHEL 6], [RHEL 7][RHEL 7], [Ubuntu 14][Ubuntu 14], [Ubuntu 16][Ubuntu 16] | [Group Policy Settings][GPOs]
 Log forwarding | [rsyslog](http://www.rsyslog.com/) | [Snare][Snare]
 Multi-factor auth (required for internet-facing servers) | [Google Authenticator][GAuth] | [Rohos Logon Key][Rohos]
 Vulnerability scanning | [Nessus][Nessus Linux] | [Nessus][Nessus Win]
+Incident Response (If OS is supported) | [FireEyeHx][FireEyeHx]|[FireEyeHx][FireEyeHx]
 
 ## Base images
 
@@ -85,6 +87,8 @@ See [the SCP-specific README](scp/README.md).
 <!-- reference-style links, to de-duplicate URLs and keep the table above readable -->
 
 [ClamAV]: https://www.clamav.net/
+[Cylance]:https://www.cylance.com/en_us/products/our-products/protect.html
+[FireEyeHx]:https://www.fireeye.com/blog/products-and-services/2017/09/bringing-advanced-protection-to-endpoints.html
 [GAuth]: https://github.com/GSA/d2d/blob/master/docs/linux_mfa_setup.md
 [Nessus Linux]: https://drive.google.com/open?id=0B726fftFCN-oemFRazdnM3FITE0
 [Nessus Win]: https://drive.google.com/open?id=0B726fftFCN-oQUtGWWE3SENBYjg
