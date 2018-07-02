@@ -14,7 +14,7 @@ def is_approved(row):
 
 def get_namespaces(csv_path):
     results = set()
-    with open(csv_path, newline='') as csvfile:
+    with open(csv_path, errors='surrogateescape') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             namespace = row['Service Namespace']
