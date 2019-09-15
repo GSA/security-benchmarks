@@ -2,6 +2,8 @@ import csv
 import json
 import os
 import re
+import sys
+from io import _io
 
 
 def is_approved(row):
@@ -12,14 +14,16 @@ def is_approved(row):
     )
 
 
-def get_namespaces(csv_path):
+def get_namespaces(csv_data):
     results = set()
-    with open(csv_path, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            namespace = row['Service Namespace']
-            if namespace and is_approved(row):
-                results.add(namespace)
+    if type(csv_data) == str:
+        reader = csv.DictReader(open(csv_data, newline=''))
+    if isinstance(csv_data, _io.TextIOWrapper):
+        reader = csv.DictReader(csv_data)
+    for row in reader:
+        namespace = row['Service Namespace']
+        if namespace and is_approved(row):
+            results.add(namespace)
 
     return results
 
@@ -43,8 +47,8 @@ def generate_policy(actions):
     }
 
 
-def csv_to_policy(csv_path):
-    namespaces = get_namespaces(csv_path)
+def csv_to_policy(csv):
+    namespaces = get_namespaces(csv)
     # sanity check
     if not namespaces:
         raise RuntimeError("Expected to find more than zero namespaces")
@@ -55,6 +59,10 @@ def csv_to_policy(csv_path):
 
 
 if __name__ == '__main__':
-    SRC = os.getenv('SRC', 'export.csv')
+    # if stdin is not a tty then stdin has data and use it over env var
+    if not sys.stdin.isatty():
+        SRC = sys.stdin
+    else:
+        SRC = os.getenv('SRC', 'export.csv')
     policy = csv_to_policy(SRC)
     print(json.dumps(policy, indent=4))
