@@ -1,77 +1,46 @@
 # GSA Security Benchmarks [![CircleCI](https://circleci.com/gh/GSA/security-benchmarks.svg?style=svg)](https://circleci.com/gh/GSA/security-benchmarks)
 
-Welcome to the General Services Administration Security Benchmarks repository. Here you can find items to help implement GSA Security Benchmarks, Infrastructure As Code, and other tools for [our DevSecOps work](https://tech.gsa.gov/guides/dev_sec_ops_guide/).
+Welcome to the General Services Administration Security Benchmarks repository. As automated implementation and verification content is developed and updated, it will be posted here. This content is provided as a tool to facilitate implementation and verification of security settings required by the GSA Security Benchmarks.
 
 ## What are GSA Security Benchmarks?
 
-The GSA publishes security guides for various operating systems and applications commonly used at the agency. For more information, please refer to the published guides on [insite.gsa.gov](https://insite.gsa.gov/portal/content/627210) (only accessible with GSA account).
+The GSA publishes security guides for various operating systems and applications commonly used at the agency. For more information, please refer to the published guides on [insite.gsa.gov](https://insite.gsa.gov/portal/content/627210) (*only accessible with GSA account*).
 
-## Available Tools
+## Available Content
 
-### Benchmarks
+### Security Benchmark Documentation
 
-Only accessible with GSA account.
+Dependency: GSA account
 
-* GSA Security Benchmarks
-    * [IT Security Technical Guides and Standards](https://insite.gsa.gov/portal/content/627210) - Documents outlining the general use and standards for security baselines.
-    * [Security Benchmark Workbooks](https://drive.google.com/drive/folders/0BwLUd26GHbxibTFROVdoSk1RNUE) - Individual workbooks listing the applicable security settings.
-* [Tenable Nessus Audit Files](https://drive.google.com/drive/folders/0BwLUd26GHbxiT1hMVUtRTGNKZjg) - Custom audit files for use with Tenable Security Center or Nessus Vulnerability Scanner
+* [Hardening Guides](https://insite.gsa.gov/portal/content/627210) - Documents outlining the general use and standards for security benchmarks.
+* [Security Benchmark Worksheets](https://drive.google.com/drive/folders/0BwLUd26GHbxibTFROVdoSk1RNUE) - Individual worksheets itemizing the security benchmark settings.
 
-For questions or comments, please email [ise-guides@gsa.gov](mailto:ise-guides@gsa.gov).
+    
+### Automated Implementation
 
-### Infrastructure
+#### Ansible Playbooks
 
-The [DevSecOps Example](https://github.com/GSA/devsecops-example) is a good starting point for understanding how all the various pieces fit together. The components are at varying levels of "completion" - see the README and open issues in the respective repository for more details. Feedback more than welcome!
+Dependency: [Ansible](https://docs.ansible.com/ansible/latest/intro_installation.html)
 
-#### Terraform Modules
+* [RHEL 6](https://github.com/GSA/ansible-os-rhel-6)
+* [RHEL 7](https://github.com/GSA/ansible-os-rhel-7)
+* [Ubuntu 16](https://github.com/GSA/ansible-os-ubuntu-16)
+* [Windows Server 2016](https://github.com/GSA/ansible-os-win-2016)
 
-* [Base Infrastructure](https://github.com/GSA/DevSecOps)
-* [EKK (logging) stack](https://github.com/GSA/devsecops-ekk-stack)
-* [Jenkins](https://github.com/GSA/jenkins-deploy)
-* [AWS VPC flow logs](https://github.com/GSA/terraform-vpc-flow-log)
+#### GPOs
 
-#### Ansible Roles
+* [Windows Server 2012 R2](https://github.com/GSA/ISE-Security-Benchmark-GPOs)
 
-* [Jenkins](https://github.com/GSA/jenkins-deploy)
-* [Nessus](https://github.helix.gsa.gov/GSASecOps/ansible-nessus-agent)
-* [NGINX HTTPS proxy](https://github.com/GSA/ansible-https-proxy)
-* [OSSEC][OSSEC]
 
-### By operating system
 
- _Work in progress._
+### Automated Verification
 
-Recommended tools to use on every server, though you are not limited to the options this [list](https://docs.google.com/document/d/1wPopsP5Thdh_p4zyIYxqQxDGk7zJsKZ5YiAH78Q2yQE/edit) (only accessible with GSA account). 
+Dependency: GSA account
 
-## Base images
+* [Tenable/Nessus Audit Files](https://drive.google.com/drive/folders/0BwLUd26GHbxiT1hMVUtRTGNKZjg) - Custom audit content for use with Tenable Security Center or Nessus Vulnerability Scanner
+* [BigFix Compliance Checklists](https://bigfixcompliance.gsa.gov:52315/scm) - Custom audit content for use with hosts that are registered with the BigFix platform.
 
-_Work in progress._
-
-This repository also contains code to build the base server images with all the agents etc. installed.
-
-1. Set up the AWS CLI.
-    1. [Install](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
-    1. [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
-1. Install additional dependencies:
-    * [Ansible](https://docs.ansible.com/ansible/latest/intro_installation.html)
-    * [Packer](https://www.packer.io/)
-1. Specify a region ([options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)).
-
-    ```sh
-    export AWS_DEFAULT_REGION=...
-    ```
-
-1. Build the AMI.
-
-    ```sh
-    make
-    ```
-
-This will create AMIs with names of `<operating system>-base-<timestamp>`.
-
-## Service Control Policy
-
-See [the SCP-specific README](scp/README.md).
+For questions or comments, contact OCISO ISE: [ise-guides@gsa.gov](mailto:ise-guides@gsa.gov).
 
 <!-- reference-style links, to de-duplicate URLs and keep the table above readable -->
 
